@@ -1,0 +1,5 @@
+mvn io.quarkus:quarkus-maven-plugin:1.8.3.Final:create \
+    -DprojectGroupId=org.bank.sample \
+    -DprojectArtifactId=app \
+    -DprojectVersion=1.0-SNAPSHOT \
+    -DclassName="org.bank.sample.MyResource"
