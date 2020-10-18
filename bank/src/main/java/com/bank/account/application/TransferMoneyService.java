@@ -14,7 +14,7 @@ public class TransferMoneyService {
         this.repository = repository;
     }
 
-    public void transfer(TransferDTO dto) {
+    public void transfer(TransferDTO dto) throws Exception {
         Account accountFrom = repository.get(new AccountNumber(dto.getAccountFrom()));
         Account accountTo = repository.get(new AccountNumber(dto.getAccountTo()));
 

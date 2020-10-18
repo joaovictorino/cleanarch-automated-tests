@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TransferMoneyTest {
     
     @Test
-    public void testTransferMoney() {
+    public void testTransferMoney() throws Exception {
         Account accountFrom = new Account(new AccountNumber("123456"), 5000.0);
         Account accountTo = new Account(new AccountNumber("654321"), 5000.0);
 

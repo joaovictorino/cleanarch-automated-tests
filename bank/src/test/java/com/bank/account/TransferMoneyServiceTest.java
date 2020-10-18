@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TransferMoneyServiceTest {
     @Test
-    public void testTransferMoneyService() {
+    public void testTransferMoneyService() throws Exception {
         MemoryRepositoryAccount repository = new MemoryRepositoryAccount();
         Account accountFrom = new Account(new AccountNumber("123456"), 5000.0);
         Account accountTo = new Account(new AccountNumber("654321"), 5000.0);
