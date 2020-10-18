@@ -9,7 +9,10 @@ public class Account {
         this.balance = balance;
     }
 
-    public void withDraw(double value) {
+    public void withDraw(double value) throws Exception {
+        if ((this.balance - value) < 0) {
+            throw new Exception("no balance available");
+        }
         this.balance -= value;
     }
 
