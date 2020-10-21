@@ -24,7 +24,7 @@ public class TransferController {
             Account accountTo = new Account(new AccountNumber("654321"), 5000.0);
             accountRepository.add(accountFrom);
             accountRepository.add(accountTo);
-            return "teste";
+            return "OK";
     }
 
     @Transactional
