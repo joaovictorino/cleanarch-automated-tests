@@ -3,6 +3,7 @@ package com.bank.account.application;
 import com.bank.account.application.dto.TransferDTO;
 import com.bank.account.model.Account;
 import com.bank.account.model.AccountNumber;
+import com.bank.account.model.Receipt;
 import com.bank.account.model.contract.Repository;
 import com.bank.account.model.service.TransferMoney;
 
@@ -14,14 +15,16 @@ public class TransferMoneyService {
         this.repository = repository;
     }
 
-    public void transfer(TransferDTO dto) throws Exception {
+    public String transfer(TransferDTO dto) throws Exception {
         Account accountFrom = repository.get(new AccountNumber(dto.getAccountFrom()));
         Account accountTo = repository.get(new AccountNumber(dto.getAccountTo()));
 
         TransferMoney transfer = new TransferMoney();
-        transfer.transfer(accountFrom, accountTo, dto.getValue());
+        Receipt receipt = transfer.transfer(accountFrom, accountTo, dto.getValue());
 
         repository.add(accountFrom);
         repository.add(accountTo);
+
+        return receipt.getTransactionId();
     }
 }

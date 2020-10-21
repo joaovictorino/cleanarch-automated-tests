@@ -1,11 +1,11 @@
 package com.bank.account.model;
 
 public class Account {
-    private AccountNumber numberAccount;
+    private AccountNumber accountNumber;
     private double balance;
 
-    public Account(AccountNumber numberAccount, double balance) {
-        this.numberAccount = numberAccount;
+    public Account(AccountNumber accountNumber, double balance) {
+        this.accountNumber = accountNumber;
         this.balance = balance;
     }
 
@@ -25,6 +25,6 @@ public class Account {
     }
 
     public AccountNumber getAccountNumber() {
-        return this.numberAccount;
+        return this.accountNumber;
     }
 }

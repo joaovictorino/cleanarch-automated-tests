@@ -12,7 +12,7 @@ public class Receipt {
 
     public String generateId() {
         Random random = new Random();
-        return random.ints(100000, 999999).findFirst().toString();
+        return String.valueOf(random.ints(100000, 999999).findFirst().getAsInt());
     }
 
     public String getTransactionId() {
