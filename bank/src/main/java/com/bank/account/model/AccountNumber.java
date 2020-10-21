@@ -16,6 +16,10 @@ public class AccountNumber {
         }
     }
 
+    public String getNumber() {
+        return this.number;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(this.number);
