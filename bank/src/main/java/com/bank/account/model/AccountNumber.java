@@ -11,7 +11,9 @@ public class AccountNumber {
     }
 
     private void validate(String value) {
-        if ((value == null) || (value != null && value.length() != 6)) {
+        if ((value == null) 
+            || (value != null 
+                && value.length() != 6)) {
             throw new IllegalArgumentException("wrong number account");
         }
     }

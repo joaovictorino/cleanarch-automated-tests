@@ -25,9 +25,25 @@ public class AccountTest {
     }
 
     @Test
-    public void testDepositAccount() {
+    public void testDepositAccount() throws Exception {
         Account account = new Account(new AccountNumber("123456"), 5000.0);
         account.deposit(200.0);
         assertEquals(account.getBalance(), 5200.0);
+    }
+
+    @Test
+    public void testWithDrawAccountFailureValueUnderZero() throws Exception {
+        Account account = new Account(new AccountNumber("123456"), 200.0);
+        assertThrows(Exception.class, () -> {
+            account.withDraw(-5.0);
+        });
+    }
+
+    @Test
+    public void testDepositAccountFailureValueUnderZero() throws Exception {
+        Account account = new Account(new AccountNumber("123456"), 200.0);
+        assertThrows(Exception.class, () -> {
+            account.deposit(-5.0);
+        });
     }
 }

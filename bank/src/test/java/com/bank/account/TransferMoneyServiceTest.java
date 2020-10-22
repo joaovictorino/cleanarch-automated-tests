@@ -8,10 +8,11 @@ import com.bank.account.fake.MemoryRepositoryAccount;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TransferMoneyServiceTest {
     @Test
-    public void testTransferMoneyService() throws Exception {
+    public void testTransferMoneyServiceSuccess() throws Exception {
         MemoryRepositoryAccount repository = new MemoryRepositoryAccount();
         Account accountFrom = new Account(new AccountNumber("123456"), 5000.0);
         Account accountTo = new Account(new AccountNumber("654321"), 5000.0);
@@ -30,5 +31,26 @@ public class TransferMoneyServiceTest {
 
         assertEquals(4900.0, repository.get(new AccountNumber("123456")).getBalance());
         assertEquals(5100.0, repository.get(new AccountNumber("654321")).getBalance());
+    }
+
+    @Test
+    public void testTransferMoneyServiceFailureAccountNotFound() throws Exception {
+        MemoryRepositoryAccount repository = new MemoryRepositoryAccount();
+        Account accountFrom = new Account(new AccountNumber("123456"), 5000.0);
+        Account accountTo = new Account(new AccountNumber("654321"), 5000.0);
+
+        repository.add(accountFrom);
+        repository.add(accountTo);
+
+        TransferMoneyService appService = new TransferMoneyService(repository);
+        
+        TransferDTO dto = new TransferDTO();
+        dto.setAccountFrom("444444");
+        dto.setAccountTo("654321");
+        dto.setValue(100.0);
+
+        assertThrows(Exception.class, () -> {
+            appService.transfer(dto);
+        });
     }
 }
