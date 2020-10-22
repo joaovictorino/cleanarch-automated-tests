@@ -44,7 +44,11 @@ public class TransferResource {
             TransferMoneyService service = new TransferMoneyService(accountRepository);
             return service.transfer(dto);
         } catch (Exception ex) {
-            return ex.getMessage();
+            if (ex.getMessage() != null) {
+                return ex.getMessage();
+            } else {
+                return "erro " + ex.toString();
+            }
         }
     }
 }
