@@ -45,8 +45,8 @@ public class TransferMoneyServiceTest {
         TransferMoneyService appService = new TransferMoneyService(repository);
         
         TransferDTO dto = new TransferDTO();
-        dto.setAccountFrom("444444");
-        dto.setAccountTo("654321");
+        dto.setAccountFrom("654321");
+        dto.setAccountTo("444444");
         dto.setValue(100.0);
 
         assertThrows(Exception.class, () -> {
