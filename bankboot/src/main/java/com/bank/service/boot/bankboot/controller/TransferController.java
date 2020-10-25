@@ -1,4 +1,4 @@
-package com.bank.service.boot.bankboot;
+package com.bank.service.boot.bankboot.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ public class TransferController {
     Repository<Account, AccountNumber> accountRepository;
 
     @Transactional
-    @RequestMapping("/")
+    @RequestMapping("/transfer")
     public String index() {
             Account accountFrom = new Account(new AccountNumber("123456"), 5000.0);
             Account accountTo = new Account(new AccountNumber("654321"), 5000.0);

@@ -1,4 +1,4 @@
-package com.bank.service.boot.bankboot;
+package com.bank.service.boot.bankboot.repository;
 
 import com.bank.account.model.contract.Repository;
 
@@ -11,7 +11,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 
 @org.springframework.stereotype.Repository
 public class AccountRepository implements Repository<Account, AccountNumber> {
