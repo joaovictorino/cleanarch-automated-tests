@@ -1,4 +1,4 @@
-package com.bank.service.boot.bankboot.repository;
+package com.bank.service.boot.repository;
 
 import com.bank.account.model.contract.Repository;
 

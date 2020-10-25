@@ -1,4 +1,4 @@
-package com.bank.service.boot.bankboot.controller;
+package com.bank.service.boot.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -37,7 +37,7 @@
 			<artifactId>bank</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<scope>system</scope>
-			<systemPath>/home/joao/Source/miniDDDJava/bank/target/bank-1.0-SNAPSHOT.jar</systemPath>
+			<systemPath>/workspace/miniDDDJava/bank/target/bank-1.0-SNAPSHOT.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

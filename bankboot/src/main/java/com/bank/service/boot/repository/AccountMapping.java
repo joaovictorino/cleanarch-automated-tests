@@ -1,4 +1,4 @@
-package com.bank.service.boot.bankboot.repository;
+package com.bank.service.boot.repository;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
