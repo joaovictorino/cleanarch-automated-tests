@@ -1,6 +1,6 @@
 # Estória
-Eu como cliente
-Gostaria de transferir dinheiro para iutro cliente
+Eu como cliente\
+Gostaria de transferir dinheiro para outro cliente
 
 # Critérios de aceite
 - Cliente deve informar número da conta de destino válida, valor, efetua a transferência e recebe um número de comprovante de transação
