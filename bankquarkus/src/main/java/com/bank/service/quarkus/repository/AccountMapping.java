@@ -1,4 +1,4 @@
-package com.bank.service.quarkus;
+package com.bank.service.quarkus.repository;
 
 import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;

@@ -1,4 +1,4 @@
-package com.bank.service.quarkus;
+package com.bank.service.quarkus.controller;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;

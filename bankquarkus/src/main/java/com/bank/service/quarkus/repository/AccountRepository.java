@@ -1,4 +1,4 @@
-package com.bank.service.quarkus;
+package com.bank.service.quarkus.repository;
 
 import com.bank.account.model.contract.Repository;
 import com.bank.account.model.Account;

@@ -1,4 +1,4 @@
-package com.bank.service.quarkus;
+package com.bank.service.quarkus.controller;
 
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
