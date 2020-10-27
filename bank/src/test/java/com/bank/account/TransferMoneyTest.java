@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class TransferMoneyTest {
     
     @Test
-    public void testTransferMoneySucess() throws Exception {
+    public void testTransferMoneySucess() {
         Account accountFrom = new Account(new AccountNumber("123456"), 5000.0);
         Account accountTo = new Account(new AccountNumber("654321"), 5000.0);
 
@@ -23,12 +23,12 @@ public class TransferMoneyTest {
     }
 
     @Test
-    public void testTransferMoneyFailureAccountNull() throws Exception {
+    public void testTransferMoneyFailureAccountNull() {
         Account accountFrom = new Account(new AccountNumber("123456"), 5000.0);
 
         TransferMoney transferMoney = new TransferMoney();
 
-        assertThrows(Exception.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             transferMoney.transfer(accountFrom, null, 100.0);
         });
     }

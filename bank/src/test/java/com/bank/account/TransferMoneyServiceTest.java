@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TransferMoneyServiceTest {
     @Test
-    public void testTransferMoneyServiceSuccess() throws Exception {
+    public void testTransferMoneyServiceSuccess() {
         MemoryRepositoryAccount repository = new MemoryRepositoryAccount();
         Account accountFrom = new Account(new AccountNumber("123456"), 5000.0);
         Account accountTo = new Account(new AccountNumber("654321"), 5000.0);
@@ -34,7 +34,7 @@ public class TransferMoneyServiceTest {
     }
 
     @Test
-    public void testTransferMoneyServiceFailureAccountNotFound() throws Exception {
+    public void testTransferMoneyServiceFailureAccountNotFound() {
         MemoryRepositoryAccount repository = new MemoryRepositoryAccount();
         Account accountFrom = new Account(new AccountNumber("123456"), 5000.0);
         Account accountTo = new Account(new AccountNumber("654321"), 5000.0);
@@ -49,7 +49,7 @@ public class TransferMoneyServiceTest {
         dto.setAccountTo("444444");
         dto.setValue(100.0);
 
-        assertThrows(Exception.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             appService.transfer(dto);
         });
     }

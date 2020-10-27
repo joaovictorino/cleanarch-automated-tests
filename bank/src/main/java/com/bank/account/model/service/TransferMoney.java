@@ -4,10 +4,10 @@ import com.bank.account.model.Account;
 import com.bank.account.model.Receipt;
 
 public class TransferMoney {
-    public Receipt transfer(Account accountFrom, Account accountTo, double value) throws Exception {
+    public Receipt transfer(Account accountFrom, Account accountTo, double value) {
         if(accountFrom == null 
             || accountTo == null)
-            throw new Exception("account should be not null");
+            throw new IllegalArgumentException("account should be not null");
 
         accountFrom.withDraw(value);
         accountTo.deposit(value);

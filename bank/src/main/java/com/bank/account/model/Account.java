@@ -9,20 +9,20 @@ public class Account {
         this.balance = balance;
     }
 
-    public void withDraw(double value) throws Exception {
+    public void withDraw(double value) {
         if(value < 0) {
-            throw new Exception("value should be greater than zero");
+            throw new IllegalArgumentException("value should be greater than zero");
         }
 
         if ((this.balance - value) < 0) {
-            throw new Exception("no balance available");
+            throw new IllegalArgumentException("no balance available");
         }
         this.balance -= value;
     }
 
-    public void deposit(double value) throws Exception {
+    public void deposit(double value) {
         if(value < 0) {
-            throw new Exception("value should be greater than zero");
+            throw new IllegalArgumentException("value should be greater than zero");
         }
 
         this.balance += value;

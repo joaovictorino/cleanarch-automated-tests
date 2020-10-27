@@ -15,15 +15,15 @@ public class TransferMoneyService {
         this.repository = repository;
     }
 
-    public String transfer(TransferDTO dto) throws Exception {
+    public String transfer(TransferDTO dto) {
         Account accountFrom = repository.get(new AccountNumber(dto.getAccountFrom()));
         Account accountTo = repository.get(new AccountNumber(dto.getAccountTo()));
 
         if (accountFrom == null)
-            throw new Exception("account from not found");
+            throw new IllegalArgumentException("account from not found");
 
         if (accountTo == null)
-            throw new Exception("account to not found");
+            throw new IllegalArgumentException("account to not found");
 
         TransferMoney transfer = new TransferMoney();
         Receipt receipt = transfer.transfer(accountFrom, accountTo, dto.getValue());

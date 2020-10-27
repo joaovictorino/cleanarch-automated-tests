@@ -36,19 +36,11 @@ public class TransferResource {
     @Path("{from}/{to}/{value}")
     @Produces(MediaType.APPLICATION_JSON)
     public String transfer(@PathParam("from") String from, @PathParam("to") String to, @PathParam("value") String value)  {
-        try {
-            TransferDTO dto = new TransferDTO();
-            dto.setAccountFrom(from);
-            dto.setAccountTo(to);
-            dto.setValue(Double.parseDouble(value));
-            TransferMoneyService service = new TransferMoneyService(accountRepository);
-            return service.transfer(dto);
-        } catch (Exception ex) {
-            if (ex.getMessage() != null) {
-                return ex.getMessage();
-            } else {
-                return "erro " + ex.toString();
-            }
-        }
+        TransferDTO dto = new TransferDTO();
+        dto.setAccountFrom(from);
+        dto.setAccountTo(to);
+        dto.setValue(Double.parseDouble(value));
+        TransferMoneyService service = new TransferMoneyService(accountRepository);
+        return service.transfer(dto);
     }
 }

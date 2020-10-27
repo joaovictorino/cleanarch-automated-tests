@@ -30,15 +30,11 @@ public class TransferController {
     @Transactional
     @RequestMapping("/transfer/{from}/{to}/{value}")
     public String index(@PathVariable String from, @PathVariable String to, @PathVariable String value) {
-        try {
-            TransferDTO dto = new TransferDTO();
-            dto.setAccountFrom(from);
-            dto.setAccountTo(to);
-            dto.setValue(Double.parseDouble(value));
-            TransferMoneyService service = new TransferMoneyService(accountRepository);
-            return service.transfer(dto);
-        } catch (Exception ex) {
-            return ex.getMessage();
-        }
+        TransferDTO dto = new TransferDTO();
+        dto.setAccountFrom(from);
+        dto.setAccountTo(to);
+        dto.setValue(Double.parseDouble(value));
+        TransferMoneyService service = new TransferMoneyService(accountRepository);
+        return service.transfer(dto);
     }
 }
