@@ -1,7 +1,5 @@
-package com.bank.account;
+package com.bank.account.model;
 
-import com.bank.account.model.Account;
-import com.bank.account.model.AccountNumber;
 import com.bank.account.model.service.TransferMoney;
 
 import org.junit.jupiter.api.Test;
@@ -11,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class TransferMoneyTest {
     
     @Test
-    public void testTransferMoneySucess() {
+    public void testTransferMoneySuccess() {
         Account accountFrom = new Account(new AccountNumber("123456"), 5000.0);
         Account accountTo = new Account(new AccountNumber("654321"), 5000.0);
 

@@ -1,10 +1,9 @@
-package com.bank.account;
+package com.bank.account.application;
 
 import com.bank.account.model.Account;
 import com.bank.account.model.AccountNumber;
-import com.bank.account.application.TransferMoneyService;
+import com.bank.account.stub.MemoryRepositoryAccount;
 import com.bank.account.application.dto.TransferDTO;
-import com.bank.account.fake.MemoryRepositoryAccount;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;

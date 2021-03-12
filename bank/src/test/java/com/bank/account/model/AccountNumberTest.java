@@ -1,9 +1,7 @@
-package com.bank.account;
+package com.bank.account.model;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;  
-
-import com.bank.account.model.AccountNumber;
 
 public class AccountNumberTest {
     @Test
