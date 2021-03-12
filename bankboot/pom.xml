@@ -14,6 +14,11 @@
 	<name>bankboot</name>
 	<description>Demo project for Spring Boot</description>
 
+	<packaging>pom</packaging>
+	<modules>
+		<module>../bank</module>
+	</modules>
+
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -36,8 +41,7 @@
 			<groupId>com.bank.account</groupId>
 			<artifactId>bank</artifactId>
 			<version>1.0-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>/home/joao/Source/miniDDDJava/bank/target/bank-1.0-SNAPSHOT.jar</systemPath>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
