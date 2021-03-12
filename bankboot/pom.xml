@@ -12,7 +12,6 @@
 	<artifactId>bankboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>bankboot</name>
-	<description>Demo project for Spring Boot</description>
 
 	<packaging>pom</packaging>
 	<modules>
@@ -20,7 +19,7 @@
 	</modules>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>14</java.version>
 	</properties>
 
 	<dependencies>
