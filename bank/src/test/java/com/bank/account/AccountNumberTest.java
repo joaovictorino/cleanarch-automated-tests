@@ -8,34 +8,34 @@ import com.bank.account.model.AccountNumber;
 public class AccountNumberTest {
     @Test
     public void testAccountNumberSuccess() {
-        AccountNumber number = new AccountNumber("123456");
+        new AccountNumber("123456");
     }
 
     @Test
     public void testAccountNumberFailure() {
         assertThrows(IllegalArgumentException.class, () -> {
-            AccountNumber number = new AccountNumber("3456");
+            new AccountNumber("3456");
         });
     }
 
     @Test
     public void testAccountNumberFailureNull() {
         assertThrows(IllegalArgumentException.class, () -> {
-            AccountNumber number = new AccountNumber(null);
+            new AccountNumber(null);
         });
     }
 
     @Test
     public void testAccountNumberFailureEmpty() {
         assertThrows(IllegalArgumentException.class, () -> {
-            AccountNumber number = new AccountNumber("");
+            new AccountNumber("");
         });
     }
 
     @Test
     public void testAccountNumberFailureOverLimit() {
         assertThrows(IllegalArgumentException.class, () -> {
-            AccountNumber number = new AccountNumber("1234567");
+            new AccountNumber("1234567");
         });
     }
 }
