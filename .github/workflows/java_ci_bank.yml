@@ -9,8 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./bank
 
     steps:
     - uses: actions/checkout@v2
@@ -20,4 +18,5 @@ jobs:
         java-version: 1.11
 
     - name: Run tests
+      working-directory: ./bank
       run: mvn test
