@@ -19,7 +19,8 @@
 	</modules>
 
 	<properties>
-		<java.version>14</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    	<maven.compiler.release>14</maven.compiler.release>
 	</properties>
 
 	<dependencies>
