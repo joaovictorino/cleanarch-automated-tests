@@ -14,7 +14,7 @@ public class AccountNumberTest {
     @Test
     public void testAccountNumberFailure() {
         assertThrows(IllegalArgumentException.class, () -> {
-            AccountNumber number = new AccountNumber("3456");
+            AccountNumber number = new AccountNumber("1234");
         });
     }
 
