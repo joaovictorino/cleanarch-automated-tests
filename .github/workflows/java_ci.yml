@@ -20,5 +20,5 @@ jobs:
       run: mvn -B package --file pom.xml
     
     - name: Build Quarkus
-      working-directory: ./bankquakus
+      working-directory: ./bankquarkus
       run: mvn -B package --file pom.xml
