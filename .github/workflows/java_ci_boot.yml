@@ -4,13 +4,13 @@ on:
   push:
     branches: [ master ]
     paths:
-      - './bank'
+      - './bankboot'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      working-directory: ./bank
+      working-directory: ./bankboot
 
     steps:
     - uses: actions/checkout@v2
@@ -19,5 +19,5 @@ jobs:
       with:
         java-version: 1.11
 
-    - name: Run tests
-      run: mvn test
+    - name: Build Spring Boot
+      run: mvn -B package --file pom.xml
