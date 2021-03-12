@@ -9,12 +9,8 @@ import javax.inject.Inject;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import com.mongodb.client.model.ReplaceOptions;
-import com.mongodb.client.model.UpdateOptions;
-import com.mongodb.client.FindIterable;
 import static com.mongodb.client.model.Filters.eq;
-import org.bson.Document;
 
 @ApplicationScoped
 public class AccountRepository implements Repository<Account, AccountNumber> {

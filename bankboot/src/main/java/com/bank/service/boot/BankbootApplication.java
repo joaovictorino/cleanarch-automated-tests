@@ -10,6 +10,5 @@ public class BankbootApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BankbootApplication.class, args);
-		
 	}
 }
