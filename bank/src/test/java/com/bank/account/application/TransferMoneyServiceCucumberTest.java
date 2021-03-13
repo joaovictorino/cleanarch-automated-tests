@@ -1,7 +1,6 @@
 package com.bank.account.application;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.framework;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -13,7 +12,6 @@ import com.bank.account.application.dto.TransferDTO;
 import com.bank.account.model.Account;
 import com.bank.account.model.AccountNumber;
 import com.bank.account.model.contract.Repository;
-import com.bank.account.stub.MemoryRepositoryAccount;
 
 public class TransferMoneyServiceCucumberTest {
     private Account accountFrom;
