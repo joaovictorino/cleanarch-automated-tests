@@ -17,10 +17,7 @@ public class TransferMoneyServiceMockitoTest {
         Account accountFrom = new Account(new AccountNumber("123456"), 5000.0);
         Account accountTo = new Account(new AccountNumber("654321"), 5000.0);
 
-        Repository<Account, AccountNumber> repo = CreateRepositoryAccount(accountFrom, accountTo);
-
-        repo.add(accountFrom);
-        repo.add(accountTo);
+        Repository<Account, AccountNumber> repo = createRepositoryAccount(accountFrom, accountTo);
 
         TransferMoneyService appService = new TransferMoneyService(repo);
         
@@ -31,12 +28,16 @@ public class TransferMoneyServiceMockitoTest {
 
         appService.transfer(dto);
 
+        verify(repo, times(1)).add(accountFrom);
+        verify(repo, times(1)).add(accountTo);
+        verify(repo, times(1)).get(new AccountNumber("123456"));
+        verify(repo, times(1)).get(new AccountNumber("654321"));
         assertEquals(4900.0, repo.get(new AccountNumber("123456")).getBalance());
         assertEquals(5100.0, repo.get(new AccountNumber("654321")).getBalance());
     }
 
     @SuppressWarnings("unchecked")
-    private Repository<Account, AccountNumber> CreateRepositoryAccount(Account accountFrom, Account accountTo) {
+    private Repository<Account, AccountNumber> createRepositoryAccount(Account accountFrom, Account accountTo) {
         Repository<Account, AccountNumber> repository = (Repository<Account, AccountNumber>) mock(Repository.class);
         when(repository.get(new AccountNumber("123456"))).thenReturn(accountFrom);
         when(repository.get(new AccountNumber("654321"))).thenReturn(accountTo);
@@ -48,7 +49,7 @@ public class TransferMoneyServiceMockitoTest {
         Account accountFrom = new Account(new AccountNumber("123456"), 5000.0);
         Account accountTo = new Account(new AccountNumber("654321"), 5000.0);
 
-        Repository<Account, AccountNumber> repo = CreateRepositoryAccount(accountFrom, accountTo);
+        Repository<Account, AccountNumber> repo = createRepositoryAccount(accountFrom, accountTo);
 
         repo.add(accountFrom);
         repo.add(accountTo);

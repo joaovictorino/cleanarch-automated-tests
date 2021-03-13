@@ -25,7 +25,6 @@ public class TransferMoneyServiceTest {
         dto.setAccountFrom("123456");
         dto.setAccountTo("654321");
         dto.setValue(100.0);
-
         appService.transfer(dto);
 
         assertEquals(4900.0, repository.get(new AccountNumber("123456")).getBalance());

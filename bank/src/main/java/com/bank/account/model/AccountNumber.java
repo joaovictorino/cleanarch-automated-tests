@@ -24,16 +24,20 @@ public class AccountNumber {
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.number);
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                    + ((number == null) ? 0 : number.hashCode());
+        return result;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o == this)
+    public boolean equals(Object obj) {
+        if (obj == this)
             return true;
-        if (!(o instanceof AccountNumber))
+        if (obj == null || !(obj instanceof AccountNumber))
             return false;
-        AccountNumber account = (AccountNumber) o;
+        AccountNumber account = (AccountNumber) obj;
         return account.number == this.number;
     }
 }

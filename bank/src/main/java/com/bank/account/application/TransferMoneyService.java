@@ -20,7 +20,7 @@ public class TransferMoneyService {
         Account accountTo = repository.get(new AccountNumber(dto.getAccountTo()));
 
         if (accountFrom == null)
-            throw new IllegalArgumentException("account from not found");
+            throw new IllegalArgumentException("account from not found ");
 
         if (accountTo == null)
             throw new IllegalArgumentException("account to not found");
