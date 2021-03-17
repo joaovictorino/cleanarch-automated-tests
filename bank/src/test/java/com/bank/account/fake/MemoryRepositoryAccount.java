@@ -1,4 +1,4 @@
-package com.bank.account.stub;
+package com.bank.account.fake;
 
 import com.bank.account.model.contract.Repository;
 
