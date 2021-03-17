@@ -2,7 +2,7 @@ package com.bank.account.application;
 
 import com.bank.account.model.Account;
 import com.bank.account.model.AccountNumber;
-import com.bank.account.stub.MemoryRepositoryAccount;
+import com.bank.account.fake.MemoryRepositoryAccount;
 import com.bank.account.application.dto.TransferDTO;
 
 import org.junit.jupiter.api.Test;
