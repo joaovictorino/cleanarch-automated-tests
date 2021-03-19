@@ -6,6 +6,8 @@ import com.bank.account.model.contract.Repository;
 import com.bank.account.application.dto.TransferDTO;
 
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
@@ -28,12 +30,14 @@ public class TransferMoneyServiceMockitoTest {
 
         appService.transfer(dto);
 
-        verify(repo, times(1)).add(accountFrom);
-        verify(repo, times(1)).add(accountTo);
-        verify(repo, times(1)).get(new AccountNumber("123456"));
-        verify(repo, times(1)).get(new AccountNumber("654321"));
-        assertEquals(4900.0, repo.get(new AccountNumber("123456")).getBalance());
-        assertEquals(5100.0, repo.get(new AccountNumber("654321")).getBalance());
+        assertAll("all results",
+            () -> verify(repo, times(1)).add(accountFrom),
+            () -> verify(repo, times(1)).add(accountTo),
+            () -> verify(repo, times(1)).get(new AccountNumber("123456")),
+            () -> verify(repo, times(1)).get(new AccountNumber("654321")),
+            () -> assertEquals(4900.0, repo.get(new AccountNumber("123456")).getBalance()),
+            () -> assertEquals(5100.0, repo.get(new AccountNumber("654321")).getBalance())
+        );
     }
 
     @Test

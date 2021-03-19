@@ -10,9 +10,7 @@ public class Account {
     }
 
     public void withDraw(double value) {
-        if(value < 0) {
-            throw new IllegalArgumentException("value should be greater than zero");
-        }
+        validateValue(value);
 
         if ((this.balance - value) < 0) {
             throw new IllegalArgumentException("no balance available");
@@ -21,9 +19,7 @@ public class Account {
     }
 
     public void deposit(double value) {
-        if(value < 0) {
-            throw new IllegalArgumentException("value should be greater than zero");
-        }
+        validateValue(value);
 
         this.balance += value;
     }
@@ -34,5 +30,11 @@ public class Account {
 
     public AccountNumber getAccountNumber() {
         return this.accountNumber;
+    }
+
+    private void validateValue(double value) {
+        if(value < 0) {
+            throw new IllegalArgumentException("value should be greater than zero");
+        }
     }
 }
