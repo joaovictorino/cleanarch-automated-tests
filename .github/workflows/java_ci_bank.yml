@@ -19,4 +19,22 @@ jobs:
 
     - name: Run tests
       working-directory: ./bank
+      run: mvn test
+
+    - name: Generate testing reports
+      working-directory: ./bank
       run: mvn jacoco:prepare-agent install jacoco:report org.pitest:pitest-maven:mutationCoverage
+
+    - name: 'Upload Code Coverage'
+      uses: actions/upload-artifact@v2
+      with:
+        name: code-coverage-reports
+        path: ./bank/target/site/jacoco/**/*
+        retention-days: 5
+
+    - name: 'Upload Mutation Tests'
+      uses: actions/upload-artifact@v2
+      with:
+        name: mutation-test-reports
+        path: ./bank/target/pit-reports/**/*
+        retention-days: 5
