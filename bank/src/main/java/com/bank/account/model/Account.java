@@ -33,7 +33,7 @@ public class Account {
     }
 
     private void validateValue(double value) {
-        if(value < 0) {
+        if(value <= 0) {
             throw new IllegalArgumentException("value should be greater than zero");
         }
     }

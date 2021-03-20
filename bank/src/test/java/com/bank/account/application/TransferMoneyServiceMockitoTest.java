@@ -31,10 +31,10 @@ public class TransferMoneyServiceMockitoTest {
         appService.transfer(dto);
 
         assertAll("all results",
-            () -> verify(repo, times(1)).add(accountFrom),
-            () -> verify(repo, times(1)).add(accountTo),
             () -> verify(repo, times(1)).get(new AccountNumber("123456")),
             () -> verify(repo, times(1)).get(new AccountNumber("654321")),
+            () -> verify(repo, times(1)).add(accountFrom),
+            () -> verify(repo, times(1)).add(accountTo),
             () -> assertEquals(4900.0, repo.get(new AccountNumber("123456")).getBalance()),
             () -> assertEquals(5100.0, repo.get(new AccountNumber("654321")).getBalance())
         );

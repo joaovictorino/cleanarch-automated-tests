@@ -14,10 +14,25 @@ public class AccountTest {
     }
 
     @Test
-    public void testWithDrawAccountFailureReachZero() {
+    public void testWithDrawAccountToZeroBalance() {
+        Account account = new Account(new AccountNumber("123456"), 5000.0);
+        account.withDraw(5000.0);
+        assertEquals(account.getBalance(), 0.0);
+    }
+
+    @Test
+    public void testWithDrawAccountFailureReachUnderLimit() {
         Account account = new Account(new AccountNumber("123456"), 199.0);
         assertThrows(IllegalArgumentException.class, () -> {
             account.withDraw(200.0);
+        });
+    }
+
+    @Test
+    public void testWithDrawAccountFailureNoValue() {
+        Account account = new Account(new AccountNumber("123456"), 199.0);
+        assertThrows(IllegalArgumentException.class, () -> {
+            account.withDraw(0.0);
         });
     }
 
