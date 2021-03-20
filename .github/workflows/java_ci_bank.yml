@@ -3,8 +3,8 @@ name: Bank
 on:
   push:
     branches: [ master ]
-    paths:
-      - 'bank/**'
+    # paths:
+    #   - 'bank/**'
 
 jobs:
   tests:
