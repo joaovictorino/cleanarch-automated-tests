@@ -19,6 +19,10 @@ jobs:
       with:
         java-version: 1.14
 
+    - name: Build Bank
+      working-directory: ./bankboot
+      run: mvn -B package --file pom.xml
+
     - name: Build Spring Boot
       working-directory: ./bankboot
       run: mvn -B package --file pom.xml
