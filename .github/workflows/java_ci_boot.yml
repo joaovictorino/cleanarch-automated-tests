@@ -5,8 +5,8 @@ on:
     - cron: "0 0 * * *"
   push:
     branches: [ master ]
-    paths:
-      - 'bankboot/**'
+    # paths:
+    #   - 'bankboot/**'
 
 jobs:
   build:
@@ -20,8 +20,8 @@ jobs:
         java-version: 1.14
 
     - name: Build Bank
-      working-directory: ./bankboot
-      run: mvn -B package --file pom.xml
+      working-directory: ./bank
+      run: mvn -B package --file pom.xml -DskipTests
 
     - name: Build Spring Boot
       working-directory: ./bankboot
