@@ -1,0 +1,44 @@
+version: '3'
+
+networks:
+  springapi:
+    driver: bridge
+  quarkusapi:
+    driver: bridge
+
+services:
+  mysqldb:
+    image: mysql:8.0
+    networks:
+      - springapi
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=account
+      - MYSQL_TCP_PORT=3306
+  springapi:
+    build:
+      context: .
+      dockerfile: DockerfileBoot 
+    image: springapi
+    networks:
+      - springapi
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysqldb
+
+  mongodb:
+    image: mongo
+    networks:
+      - quarkusapi
+
+  quarkusapi:
+    build:
+      context: .
+      dockerfile: DockerfileQuarkus
+    networks:
+      - quarkusapi
+    ports:
+      - 8081:8080
+    depends_on:
+      - mongodb

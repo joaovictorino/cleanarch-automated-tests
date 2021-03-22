@@ -6,7 +6,7 @@ mvn io.quarkus:quarkus-maven-plugin:1.12.2.Final:create \
     -Dpath="/hello"
 
 # run database mysql
-docker run --name some-mongodb -p 27017:27017 -d mongo
+docker run -p 27017:27017 -d mongo
 
 # run application
 ./mvnw compile quarkus:dev

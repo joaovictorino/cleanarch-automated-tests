@@ -8,22 +8,15 @@
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
     <maven.compiler.parameters>true</maven.compiler.parameters>
+    <maven.compiler.release>14</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-   	<maven.compiler.release>14</maven.compiler.release>
     <quarkus-plugin.version>1.8.3.Final</quarkus-plugin.version>
     <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
     <quarkus.platform.version>1.8.3.Final</quarkus.platform.version>
     <surefire-plugin.version>2.22.1</surefire-plugin.version>
   </properties>
-  
-	<packaging>pom</packaging>
-  
-	<modules>
-		<module>../bank</module>
-	</modules>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -48,7 +41,8 @@
       <groupId>com.bank.account</groupId>
       <artifactId>bank</artifactId>
       <version>1.0-SNAPSHOT</version>
-      <scope>compile</scope>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/../lib/bank-1.0-SNAPSHOT.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -63,6 +57,10 @@
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-mongodb-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-container-image-docker</artifactId>
     </dependency>
   </dependencies>
   <build>
