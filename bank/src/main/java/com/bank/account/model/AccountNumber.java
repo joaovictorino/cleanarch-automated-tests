@@ -30,7 +30,7 @@ public class AccountNumber {
     public boolean equals(Object obj) {
         if (obj == this)
             return true;
-        if (obj == null || !(obj instanceof AccountNumber))
+        if (!(obj instanceof AccountNumber))
             return false;
         AccountNumber account = (AccountNumber) obj;
         return account.number == this.number;
