@@ -37,12 +37,35 @@
 			<artifactId>bank</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<scope>system</scope>
+			<!-- <systemPath>/home/joao/Source/miniDDDJava/bank/target/bank-1.0-SNAPSHOT.jar</systemPath> -->
 			<systemPath>${project.basedir}/../lib/bank-1.0-SNAPSHOT.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>spring-mock-mvc</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>3.8.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured-all</artifactId>
+			<version>3.3.0</version>
+            <scope>test</scope>
 		</dependency>
 	</dependencies>
 
