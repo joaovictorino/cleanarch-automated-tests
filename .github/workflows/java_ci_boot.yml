@@ -25,4 +25,4 @@ jobs:
 
     - name: Build Spring Boot
       working-directory: ./bankboot
-      run: mvn -B package --file pom.xml
+      run: mvn -B package --file pom.xml -DskipTests
