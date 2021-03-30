@@ -38,7 +38,6 @@ public class TransferControllerRestAssuredTest {
 
     @Test
     public void transferMoneyFailure() {
-        //given().get("/transfer").then().statusCode(HttpStatus.OK.value());
         given().get("/transfer/123456/654321/-20").then().statusCode(400);
     }
 }
