@@ -25,4 +25,4 @@ jobs:
     
     - name: Build Quarkus
       working-directory: ./bankquarkus
-      run: mvn -B package --file pom.xml
+      run: mvn -B package --file pom.xml -DskipTests
