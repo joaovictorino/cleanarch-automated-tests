@@ -29,7 +29,7 @@ public class TransferControllerRestAssuredTest {
 
     @Test
     public void transferMoneySuccess() {
-        given().get("/transfer/123456/654321/200").then().statusCode(HttpStatus.OK.value());
+        given().post("/transfer/123456/654321/200").then().statusCode(HttpStatus.OK.value());
         float balanceFrom = given().get("/account/123456").then().assertThat().statusCode(HttpStatus.OK.value()).extract().path("balance");
         float balanceTo = given().get("/account/654321").then().assertThat().statusCode(HttpStatus.OK.value()).extract().path("balance");
         assertEquals(4800.0, balanceFrom);
@@ -38,6 +38,6 @@ public class TransferControllerRestAssuredTest {
 
     @Test
     public void transferMoneyFailure() {
-        given().get("/transfer/123456/654321/-20").then().statusCode(400);
+        given().post("/transfer/123456/654321/-20").then().statusCode(400);
     }
 }

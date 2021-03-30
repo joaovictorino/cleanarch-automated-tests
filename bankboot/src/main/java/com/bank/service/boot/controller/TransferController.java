@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import com.bank.account.application.TransferMoneyService;
 import com.bank.account.application.dto.TransferDTO;
 import com.bank.account.model.Account;
@@ -30,7 +32,7 @@ public class TransferController {
     }
 
     @Transactional
-    @RequestMapping("/transfer/{from}/{to}/{value}")
+    @PostMapping("/transfer/{from}/{to}/{value}")
     public String index(@PathVariable String from, @PathVariable String to, @PathVariable String value) {
         try {
             TransferDTO dto = new TransferDTO();
@@ -39,8 +41,7 @@ public class TransferController {
             dto.setValue(Double.parseDouble(value));
             TransferMoneyService service = new TransferMoneyService(accountRepository);
             return service.transfer(dto);
-        }
-        catch(IllegalArgumentException ex){
+        } catch(IllegalArgumentException ex) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage(), ex);
         }
     }

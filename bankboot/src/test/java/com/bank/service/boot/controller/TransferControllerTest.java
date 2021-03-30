@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(TransferController.class)
@@ -35,18 +36,18 @@ public class TransferControllerTest {
 
     @Test
     public void transferMoneySuccess() throws Exception {
-        MvcResult result = this.mockMvc.perform(get("/transfer/123456/654321/200")).andExpect(status().isOk()).andReturn();
+        MvcResult result = this.mockMvc.perform(post("/transfer/123456/654321/200")).andExpect(status().isOk()).andReturn();
         String receipt = result.getResponse().getContentAsString();
         assertEquals(6, receipt.length());
     }
 
     @Test
     public void transferMoneyFailureInvalidValue() throws Exception {
-        this.mockMvc.perform(get("/transfer/123456/654321/-10")).andExpect(status().isBadRequest());
+        this.mockMvc.perform(post("/transfer/123456/654321/-10")).andExpect(status().isBadRequest());
     }
 
     @Test
     public void transferMoneyFailureExceedLimit() throws Exception {
-        this.mockMvc.perform(get("/transfer/123456/654321/10000")).andExpect(status().isBadRequest());
+        this.mockMvc.perform(post("/transfer/123456/654321/10000")).andExpect(status().isBadRequest());
     }
 }
