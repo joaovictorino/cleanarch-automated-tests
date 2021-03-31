@@ -16,7 +16,7 @@ import static io.restassured.module.mockmvc.RestAssuredMockMvc.given;
 
 @SpringBootTest
 @TestInstance(Lifecycle.PER_CLASS)
-public class TransferControllerRestAssuredTest {
+public class TransferControllerRestAssuredMockTest {
     
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -38,6 +38,6 @@ public class TransferControllerRestAssuredTest {
 
     @Test
     public void transferMoneyFailure() {
-        given().post("/transfer/123456/654321/-20").then().statusCode(400);
+        given().post("/transfer/123456/654321/-20").then().statusCode(HttpStatus.BAD_REQUEST.value());
     }
 }
