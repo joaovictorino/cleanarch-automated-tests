@@ -2,10 +2,12 @@ package com.bank.service.quarkus.controller;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import javax.enterprise.context.RequestScoped;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
@@ -23,8 +25,20 @@ public class AccountResource {
     @GET
     @Path("{number}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String index(@PathParam("number") String number) {
-        return String.valueOf(accountRepository.get(new AccountNumber(number)).getBalance());
+    public Response index(@PathParam("number") String number) {
+        return Response.ok(accountRepository.get(new AccountNumber(number))).build();
+    }
+
+    @POST
+    @Path("{number}/{balance}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createAccount(@PathParam("number") String number, @PathParam("balance") double balance) {
+        try {
+            accountRepository.add(new Account(new AccountNumber(number), balance));
+            return Response.ok("account created").build();
+        } catch (IllegalArgumentException ex) {
+            return Response.status(Status.BAD_REQUEST).entity(ex.getMessage()).build();
+        }
     }
     
 }
