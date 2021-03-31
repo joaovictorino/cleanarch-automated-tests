@@ -15,11 +15,13 @@ services:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=account
       - MYSQL_TCP_PORT=3306
+
   springapi:
     build:
       context: .
       dockerfile: DockerfileBoot 
     image: springapi
+    restart: always
     networks:
       - springapi
     ports:
