@@ -4,8 +4,10 @@ import com.bank.account.model.Account;
 import com.bank.account.model.AccountNumber;
 import com.bank.account.model.contract.Repository;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -19,6 +21,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(TransferController.class)
+@TestInstance(Lifecycle.PER_CLASS)
 public class TransferControllerTest {
 
     @Autowired
@@ -27,7 +30,7 @@ public class TransferControllerTest {
     @MockBean
     Repository<Account, AccountNumber> accountRepository;
 
-    @BeforeEach
+    @BeforeAll
     public void setup() {
         when(accountRepository.get(argThat(account -> account != null && account.getNumber().equals("123456")))).thenReturn(new Account(new AccountNumber("123456"), 5000.0));
         when(accountRepository.get(argThat(account -> account != null && account.getNumber().equals("654321")))).thenReturn(new Account(new AccountNumber("654321"), 5000.0));
