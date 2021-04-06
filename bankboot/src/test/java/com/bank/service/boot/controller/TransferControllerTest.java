@@ -16,6 +16,8 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -30,10 +32,15 @@ public class TransferControllerTest {
     @MockBean
     Repository<Account, AccountNumber> accountRepository;
 
+    private Account accountFrom;
+    private Account accountTo;
+
     @BeforeAll
     public void setup() {
-        when(accountRepository.get(argThat(account -> account != null && account.getNumber().equals("123456")))).thenReturn(new Account(new AccountNumber("123456"), 5000.0));
-        when(accountRepository.get(argThat(account -> account != null && account.getNumber().equals("654321")))).thenReturn(new Account(new AccountNumber("654321"), 5000.0));
+        accountFrom = new Account(new AccountNumber("123456"), 5000.0);
+        accountTo = new Account(new AccountNumber("654321"), 5000.0);
+        when(accountRepository.get(argThat(account -> account != null && account.getNumber().equals("123456")))).thenReturn(accountFrom);
+        when(accountRepository.get(argThat(account -> account != null && account.getNumber().equals("654321")))).thenReturn(accountTo);
     }
 
     @Test
@@ -41,6 +48,10 @@ public class TransferControllerTest {
         MvcResult result = this.mockMvc.perform(post("/transfer/123456/654321/200")).andExpect(status().isOk()).andReturn();
         String receipt = result.getResponse().getContentAsString();
         assertEquals(6, receipt.length());
+        verify(accountRepository, times(1)).get(argThat(account -> account != null && account.getNumber().equals("123456")));
+        verify(accountRepository, times(1)).get(argThat(account -> account != null && account.getNumber().equals("654321")));
+        verify(accountRepository, times(1)).add(accountFrom);
+        verify(accountRepository, times(1)).add(accountTo);
     }
 
     @Test
