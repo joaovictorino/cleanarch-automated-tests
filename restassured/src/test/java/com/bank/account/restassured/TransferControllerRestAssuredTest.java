@@ -1,3 +1,5 @@
+package com.bank.account.restassured;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeAll;
