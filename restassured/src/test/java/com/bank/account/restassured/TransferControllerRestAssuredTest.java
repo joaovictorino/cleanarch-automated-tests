@@ -16,7 +16,7 @@ public class TransferControllerRestAssuredTest {
     }
 
     @Test
-    public void transferMoneySuccess() {
+    public void testTransferMoneySuccess() {
         post("/transfer/123456/654321/200").then().statusCode(200);
         float balanceFrom = get("/account/123456").then().assertThat().statusCode(200).extract().path("balance");
         float balanceTo = get("/account/654321").then().assertThat().statusCode(200).extract().path("balance");
@@ -25,7 +25,7 @@ public class TransferControllerRestAssuredTest {
     }
 
     @Test
-    public void transferMoneyFailure() {
+    public void testTransferMoneyFailure() {
         post("/transfer/123456/654321/-20").then().statusCode(400);
     }
 }

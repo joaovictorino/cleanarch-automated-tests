@@ -28,7 +28,7 @@ public class TransferControllerRestAssuredMockTest {
     }
 
     @Test
-    public void transferMoneySuccess() {
+    public void testTransferMoneySuccess() {
         given().post("/transfer/123456/654321/200").then().statusCode(HttpStatus.OK.value());
         float balanceFrom = given().get("/account/123456").then().assertThat().statusCode(HttpStatus.OK.value()).extract().path("balance");
         float balanceTo = given().get("/account/654321").then().assertThat().statusCode(HttpStatus.OK.value()).extract().path("balance");
@@ -37,7 +37,7 @@ public class TransferControllerRestAssuredMockTest {
     }
 
     @Test
-    public void transferMoneyFailure() {
+    public void testTransferMoneyFailure() {
         given().post("/transfer/123456/654321/-20").then().statusCode(HttpStatus.BAD_REQUEST.value());
     }
 }

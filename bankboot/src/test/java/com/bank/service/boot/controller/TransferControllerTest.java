@@ -37,19 +37,19 @@ public class TransferControllerTest {
     }
 
     @Test
-    public void transferMoneySuccess() throws Exception {
+    public void testTransferMoneySuccess() throws Exception {
         MvcResult result = this.mockMvc.perform(post("/transfer/123456/654321/200")).andExpect(status().isOk()).andReturn();
         String receipt = result.getResponse().getContentAsString();
         assertEquals(6, receipt.length());
     }
 
     @Test
-    public void transferMoneyFailureInvalidValue() throws Exception {
+    public void testTransferMoneyFailureInvalidValue() throws Exception {
         this.mockMvc.perform(post("/transfer/123456/654321/-10")).andExpect(status().isBadRequest());
     }
 
     @Test
-    public void transferMoneyFailureExceedLimit() throws Exception {
+    public void testTransferMoneyFailureExceedLimit() throws Exception {
         this.mockMvc.perform(post("/transfer/123456/654321/10000")).andExpect(status().isBadRequest());
     }
 }
