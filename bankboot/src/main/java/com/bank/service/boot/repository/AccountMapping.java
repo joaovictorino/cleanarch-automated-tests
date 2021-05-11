@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity(name="account")
 public class AccountMapping {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String number;
     private double balance;

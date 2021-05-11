@@ -24,20 +24,19 @@ public class TransferControllerRestAssuredMockTest {
     @BeforeAll
     public void initializeRestAssuredMockMvcWebApplicationContext() {
         RestAssuredMockMvc.webAppContextSetup(webApplicationContext);
-        given().get("/transfer").then().statusCode(HttpStatus.OK.value());
     }
 
     @Test
     public void testTransferMoneySuccess() {
-        given().post("/transfer/123456/654321/200").then().statusCode(HttpStatus.OK.value());
-        float balanceFrom = given().get("/account/123456").then().assertThat().statusCode(HttpStatus.OK.value()).extract().path("balance");
-        float balanceTo = given().get("/account/654321").then().assertThat().statusCode(HttpStatus.OK.value()).extract().path("balance");
+        given().post("/transfer/987321/123789/200").then().statusCode(HttpStatus.OK.value());
+        float balanceFrom = given().get("/account/987321").then().assertThat().statusCode(HttpStatus.OK.value()).extract().path("balance");
+        float balanceTo = given().get("/account/123789").then().assertThat().statusCode(HttpStatus.OK.value()).extract().path("balance");
         assertEquals(4800.0, balanceFrom);
         assertEquals(5200.0, balanceTo);
     }
 
     @Test
     public void testTransferMoneyFailure() {
-        given().post("/transfer/123456/654321/-20").then().statusCode(HttpStatus.BAD_REQUEST.value());
+        given().post("/transfer/987321/123789/-20").then().statusCode(HttpStatus.BAD_REQUEST.value());
     }
 }

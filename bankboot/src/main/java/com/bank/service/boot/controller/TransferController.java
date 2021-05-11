@@ -2,7 +2,6 @@ package com.bank.service.boot.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,16 +19,6 @@ public class TransferController {
 
     @Autowired
     Repository<Account, AccountNumber> accountRepository;
-
-    @Transactional
-    @RequestMapping("/transfer")
-    public String index() {
-        Account accountFrom = new Account(new AccountNumber("123456"), 5000.0);
-        Account accountTo = new Account(new AccountNumber("654321"), 5000.0);
-        accountRepository.add(accountFrom);
-        accountRepository.add(accountTo);
-        return "OK";
-    }
 
     @Transactional
     @PostMapping("/transfer/{from}/{to}/{value}")
