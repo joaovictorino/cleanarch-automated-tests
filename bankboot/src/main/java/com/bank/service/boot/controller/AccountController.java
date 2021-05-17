@@ -11,19 +11,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bank.account.model.Account;
-import com.bank.account.model.AccountNumber;
 import com.bank.account.model.contract.Repository;
 
 @RestController
 public class AccountController {
 
     @Autowired
-    Repository<Account, AccountNumber> accountRepository;
+    Repository<Account, String> accountRepository;
 
     @Transactional
     @RequestMapping("/account/{number}")
     public Account index(@PathVariable String number) {
-        return accountRepository.get(new AccountNumber(number));
+        return accountRepository.get(number);
     }
 
     @Transactional
@@ -31,7 +30,7 @@ public class AccountController {
     @ResponseStatus(HttpStatus.OK)
     public String createAccount(@PathVariable String number, @PathVariable double balance) {
         try {
-            accountRepository.add(new Account(new AccountNumber(number), balance));
+            accountRepository.add(new Account(number, balance));
             return "account created";
         } catch (IllegalArgumentException ex) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage(), ex);

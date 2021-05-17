@@ -18,7 +18,6 @@ import javax.enterprise.context.RequestScoped;
 import com.bank.account.application.TransferMoneyService;
 import com.bank.account.application.dto.TransferDTO;
 import com.bank.account.model.Account;
-import com.bank.account.model.AccountNumber;
 import com.bank.account.model.contract.Repository;
 
 @RequestScoped
@@ -26,15 +25,15 @@ import com.bank.account.model.contract.Repository;
 public class TransferResource {
 
     @Inject
-    Repository<Account, AccountNumber> accountRepository;
+    Repository<Account, String> accountRepository;
 
     @Inject 
     TransactionManager tm;
 
     @GET
     public String index() {
-        Account accountFrom = new Account(new AccountNumber("123456"), 5000.0);
-        Account accountTo = new Account(new AccountNumber("654321"), 5000.0);
+        Account accountFrom = new Account("123456", 5000.0);
+        Account accountTo = new Account("654321", 5000.0);
         accountRepository.add(accountFrom);
         accountRepository.add(accountTo);
         return "OK";

@@ -10,20 +10,19 @@ import io.cucumber.java.en.Then;
 
 import com.bank.account.application.dto.TransferDTO;
 import com.bank.account.model.Account;
-import com.bank.account.model.AccountNumber;
 import com.bank.account.model.contract.Repository;
 
 public class TransferMoneyServiceCucumberTest {
     private Account accountFrom;
     private Account accountTo;
-    private Repository<Account, AccountNumber> repo;
+    private Repository<Account, String> repo;
     private TransferMoneyService appService;
     private TransferDTO dto;
 
     @Given("account {string} with balance {double} and account {string} with balance {double}")
     public void testCreateTwoAccounts(String numberFrom, Double balanceFrom, String numberTo, Double balanceTo) {
-        accountFrom = new Account(new AccountNumber(numberFrom), balanceFrom);
-        accountTo = new Account(new AccountNumber(numberTo), balanceTo);
+        accountFrom = new Account(numberFrom, balanceFrom);
+        accountTo = new Account(numberTo, balanceTo);
         repo = createRepositoryAccount(accountFrom, accountTo);
         appService = new TransferMoneyService(repo);
         
@@ -45,8 +44,8 @@ public class TransferMoneyServiceCucumberTest {
     }
 
     @SuppressWarnings("unchecked")
-    private Repository<Account, AccountNumber> createRepositoryAccount(Account accountFrom, Account accountTo) {
-        Repository<Account, AccountNumber> repository = (Repository<Account, AccountNumber>) mock(Repository.class);
+    private Repository<Account, String> createRepositoryAccount(Account accountFrom, Account accountTo) {
+        Repository<Account, String> repository = (Repository<Account, String>) mock(Repository.class);
         when(repository.get(accountFrom.getAccountNumber())).thenReturn(accountFrom);
         when(repository.get(accountTo.getAccountNumber())).thenReturn(accountTo);
         return repository;

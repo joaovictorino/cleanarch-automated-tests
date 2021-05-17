@@ -12,7 +12,6 @@ import javax.enterprise.context.RequestScoped;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import com.bank.account.model.Account;
-import com.bank.account.model.AccountNumber;
 import com.bank.account.model.contract.Repository;
 
 @RequestScoped
@@ -20,13 +19,13 @@ import com.bank.account.model.contract.Repository;
 public class AccountResource {
 
     @Inject
-    Repository<Account, AccountNumber> accountRepository;
+    Repository<Account, String> accountRepository;
 
     @GET
     @Path("{number}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response index(@PathParam("number") String number) {
-        return Response.ok(accountRepository.get(new AccountNumber(number))).build();
+        return Response.ok(accountRepository.get(number)).build();
     }
 
     @POST
@@ -34,7 +33,7 @@ public class AccountResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response createAccount(@PathParam("number") String number, @PathParam("balance") double balance) {
         try {
-            accountRepository.add(new Account(new AccountNumber(number), balance));
+            accountRepository.add(new Account(number, balance));
             return Response.ok("account created").build();
         } catch (IllegalArgumentException ex) {
             return Response.status(Status.BAD_REQUEST).entity(ex.getMessage()).build();

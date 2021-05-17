@@ -2,7 +2,6 @@ package com.bank.service.quarkus.repository;
 
 import com.bank.account.model.contract.Repository;
 import com.bank.account.model.Account;
-import com.bank.account.model.AccountNumber;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -13,33 +12,33 @@ import com.mongodb.client.model.ReplaceOptions;
 import static com.mongodb.client.model.Filters.eq;
 
 @ApplicationScoped
-public class AccountRepository implements Repository<Account, AccountNumber> {
+public class AccountRepository implements Repository<Account, String> {
 
     @Inject
     MongoClient mongoClient;
 
     @Override
-    public Account get(AccountNumber accountNumber) {
-        AccountMapping mapping = get(accountNumber.getNumber());
-        return new Account(new AccountNumber(mapping.getNumber()), mapping.getBalance());
+    public Account get(String accountNumber) {
+        AccountMapping mapping = getInternal(accountNumber);
+        return new Account(mapping.getNumber(), mapping.getBalance());
     }
 
-    private AccountMapping get(String accountNumber) {
+    private AccountMapping getInternal(String accountNumber) {
         return getCollection().find(eq("number", accountNumber)).first();
     }
 
     @Override
     public void add(Account account) {
-        AccountMapping mapping = get(account.getAccountNumber().getNumber());
+        AccountMapping mapping = getInternal(account.getAccountNumber());
 
         if(mapping == null) {
             AccountMapping mappingNew = new AccountMapping();
             mappingNew.setBalance(account.getBalance());
-            mappingNew.setNumber(account.getAccountNumber().getNumber());
+            mappingNew.setNumber(account.getAccountNumber());
             getCollection().insertOne(mappingNew);
         } else { 
             mapping.setBalance(account.getBalance());
-            getCollection().replaceOne(eq("number", account.getAccountNumber().getNumber()), mapping, new ReplaceOptions().upsert(true).bypassDocumentValidation(true));
+            getCollection().replaceOne(eq("number", account.getAccountNumber()), mapping, new ReplaceOptions().upsert(true).bypassDocumentValidation(true));
         }
     }
 

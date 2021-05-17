@@ -4,8 +4,8 @@ public class Account {
     private AccountNumber accountNumber;
     private double balance;
 
-    public Account(AccountNumber accountNumber, double balance) {
-        this.accountNumber = accountNumber;
+    public Account(String accountNumber, double balance) {
+        this.accountNumber = new AccountNumber(accountNumber);
         this.balance = balance;
     }
 
@@ -28,8 +28,8 @@ public class Account {
         return this.balance;
     }
 
-    public AccountNumber getAccountNumber() {
-        return this.accountNumber;
+    public String getAccountNumber() {
+        return this.accountNumber.getNumber();
     }
 
     private void validateValue(double value) {

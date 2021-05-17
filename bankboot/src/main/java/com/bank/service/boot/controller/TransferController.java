@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.bank.account.application.TransferMoneyService;
 import com.bank.account.application.dto.TransferDTO;
 import com.bank.account.model.Account;
-import com.bank.account.model.AccountNumber;
 import com.bank.account.model.contract.Repository;
 
 @RestController
 public class TransferController {
 
     @Autowired
-    Repository<Account, AccountNumber> accountRepository;
+    Repository<Account, String> accountRepository;
 
     @Transactional
     @PostMapping("/transfer/{from}/{to}/{value}")

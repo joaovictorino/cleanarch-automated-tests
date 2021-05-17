@@ -5,18 +5,17 @@ import com.bank.account.model.contract.Repository;
 import java.util.Hashtable;
 
 import com.bank.account.model.Account;
-import com.bank.account.model.AccountNumber;
 
-public class MemoryRepositoryAccount implements Repository<Account, AccountNumber> {
+public class MemoryRepositoryAccount implements Repository<Account, String> {
 
-    private Hashtable<AccountNumber, Account> dict;
+    private Hashtable<String, Account> dict;
 
     public MemoryRepositoryAccount() {
-        dict = new Hashtable<AccountNumber, Account>();
+        dict = new Hashtable<String, Account>();
     }
 
     @Override
-    public Account get(AccountNumber field) {
+    public Account get(String field) {
         return dict.get(field);
     }
 

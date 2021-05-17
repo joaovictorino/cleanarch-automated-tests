@@ -1,7 +1,6 @@
 package com.bank.service.boot.controller;
 
 import com.bank.account.model.Account;
-import com.bank.account.model.AccountNumber;
 import com.bank.account.model.contract.Repository;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -30,17 +29,17 @@ public class TransferControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    Repository<Account, AccountNumber> accountRepository;
+    Repository<Account, String> accountRepository;
 
     private Account accountFrom;
     private Account accountTo;
 
     @BeforeAll
     public void setup() {
-        accountFrom = new Account(new AccountNumber("123456"), 5000.0);
-        accountTo = new Account(new AccountNumber("654321"), 5000.0);
-        when(accountRepository.get(argThat(account -> account != null && account.getNumber().equals("123456")))).thenReturn(accountFrom);
-        when(accountRepository.get(argThat(account -> account != null && account.getNumber().equals("654321")))).thenReturn(accountTo);
+        accountFrom = new Account("123456", 5000.0);
+        accountTo = new Account("654321", 5000.0);
+        when(accountRepository.get(argThat(account -> account != null && account.equals("123456")))).thenReturn(accountFrom);
+        when(accountRepository.get(argThat(account -> account != null && account.equals("654321")))).thenReturn(accountTo);
     }
 
     @Test
@@ -48,8 +47,8 @@ public class TransferControllerTest {
         MvcResult result = this.mockMvc.perform(post("/transfer/123456/654321/200")).andExpect(status().isOk()).andReturn();
         String receipt = result.getResponse().getContentAsString();
         assertEquals(6, receipt.length());
-        verify(accountRepository, times(1)).get(argThat(account -> account != null && account.getNumber().equals("123456")));
-        verify(accountRepository, times(1)).get(argThat(account -> account != null && account.getNumber().equals("654321")));
+        verify(accountRepository, times(1)).get(argThat(account -> account != null && account.equals("123456")));
+        verify(accountRepository, times(1)).get(argThat(account -> account != null && account.equals("654321")));
         verify(accountRepository, times(1)).add(accountFrom);
         verify(accountRepository, times(1)).add(accountTo);
     }
