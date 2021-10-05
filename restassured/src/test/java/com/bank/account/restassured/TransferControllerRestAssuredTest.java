@@ -14,7 +14,6 @@ public class TransferControllerRestAssuredTest {
     @BeforeAll
     public static void setBaseURI() {
         RestAssured.baseURI = "http://localhost:8080";
-        get("/transfer").then().statusCode(200);
     }
 
     @Test
