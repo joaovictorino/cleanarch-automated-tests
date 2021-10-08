@@ -67,4 +67,11 @@ public class AccountNumberTest {
             new AccountNumber("1234567");
         });
     }
+
+    @Test
+    public void testAccountNumberFailureNonNumeric(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            new AccountNumber("abc546");
+        });
+    }
 }

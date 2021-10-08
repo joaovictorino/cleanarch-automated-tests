@@ -5,16 +5,20 @@ import java.util.Objects;
 public class AccountNumber {
     private String number;
 
-    public AccountNumber(String value) {
-        validate(value);
-        this.number = value;
+    public AccountNumber(String number) {
+        validate(number);
+        this.number = number;
     }
 
-    private void validate(String value) {
-        if (value == null
-            || value.length() != 6) {
+    private void validate(String number) {
+        if (number == null
+            || IsNot6NumericDigits(number)) {
             throw new IllegalArgumentException("wrong number account");
         }
+    }
+
+    private boolean IsNot6NumericDigits(String number) {
+        return !number.matches("^[0-9]{6}$");
     }
 
     public String getNumber() {
