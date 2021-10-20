@@ -88,7 +88,7 @@
               <version>0.14</version>
             </dependency>
           </dependencies>
-       </plugin>
+        </plugin>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
