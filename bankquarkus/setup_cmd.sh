@@ -1,9 +1,5 @@
 # create quarkus project
-mvn io.quarkus:quarkus-maven-plugin:1.12.2.Final:create \
-    -DprojectGroupId=org.acme \
-    -DprojectArtifactId=getting-started \
-    -DclassName="org.acme.getting.started.GreetingResource" \
-    -Dpath="/hello"
+mvn io.quarkus:quarkus-maven-plugin:1.12.2.Final:create -DprojectGroupId="com.bank.service.quarkus" -DprojectArtifactId="bankquarkus" -DclassName="com.bank.service.quarkus.controller.AccountResource"
 
 # run database mysql
 docker run -p 27017:27017 -d mongo
