@@ -10,14 +10,14 @@ public class AccountTest {
     public void testWithDrawAccount() {
         Account account = new Account("123456", 5000.0);
         account.withDraw(200.0);
-        assertEquals(account.getBalance(), 4800.0);
+        assertEquals(4800.0, account.getBalance());
     }
 
     @Test
     public void testWithDrawAccountToZeroBalance() {
         Account account = new Account("123456", 5000.0);
         account.withDraw(5000.0);
-        assertEquals(account.getBalance(), 0.0);
+        assertEquals(0.0, account.getBalance());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class AccountTest {
     public void testDepositAccount() {
         Account account = new Account("123456", 5000.0);
         account.deposit(200.0);
-        assertEquals(account.getBalance(), 5200.0);
+        assertEquals(5200.0, account.getBalance());
     }
 
     @Test
