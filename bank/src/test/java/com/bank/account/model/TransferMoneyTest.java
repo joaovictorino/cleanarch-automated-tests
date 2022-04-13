@@ -14,10 +14,11 @@ public class TransferMoneyTest {
         Account accountTo = new Account("654321", 5000.0);
 
         TransferMoney transferMoney = new TransferMoney();
-        transferMoney.transfer(accountFrom, accountTo, 100.0);
+        Receipt receipt = transferMoney.transfer(accountFrom, accountTo, 100.0);
 
         assertEquals(4900.0, accountFrom.getBalance());
         assertEquals(5100.0, accountTo.getBalance());
+        assertEquals(6, receipt.getTransactionId().length());
     }
 
     @Test
