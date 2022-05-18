@@ -20,7 +20,7 @@ services:
     build:
       context: .
       dockerfile: DockerfileBoot 
-    restart: always
+    restart: on-failure
     networks:
       - springapi
     ports:
@@ -37,6 +37,7 @@ services:
     build:
       context: .
       dockerfile: DockerfileQuarkus
+    restart: on-failure
     networks:
       - quarkusapi
     ports:

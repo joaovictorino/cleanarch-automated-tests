@@ -1,14 +1,12 @@
 FROM maven:3.6.3-openjdk-17-slim as BUILD
 
-COPY bank/ /src/bank
-WORKDIR /src/bank
-RUN mvn clean package -DskipTests
+COPY . /src
+WORKDIR /src
 
-COPY bankquarkus/ /src/bankquarkus
 RUN rm /src/bankquarkus/src/main/resources/application.properties
 RUN mv /src/bankquarkus/src/main/resources/application.docker.properties /src/bankquarkus/src/main/resources/application.properties
-WORKDIR /src/bankquarkus
-RUN mvn clean package -DskipTests
+
+RUN mvn clean package -pl bankquarkus -am -DskipTests=true
 
 FROM openjdk:17-slim
 EXPOSE 8080
