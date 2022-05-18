@@ -12,5 +12,5 @@ docker run -p 27017:27017 -d mongo
 
 Rodar a aplicação
 ````sh
-./mvnw compile quarkus:dev
+./mvnw install -pl bankquarkus -am && ./mvnw quarkus:dev -pl bankquarkus
 ````

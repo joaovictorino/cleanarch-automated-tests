@@ -1,7 +1,7 @@
 # Spring Boot
 Para criar projeto Spring Boot, usar Spring Initialzr
 
-Baixar dependências do pom.xml
+Instalar JAR
 ````sh
 mvn install
 ````
@@ -13,5 +13,5 @@ docker run -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=account -p 3306:3306 
 
 Rodar a aplicação
 ````sh
-./mvnw clean spring-boot:run
+./mvnw install -pl bankboot -am && ./mvnw spring-boot:run -pl bankboot
 ````
