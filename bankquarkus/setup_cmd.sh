@@ -6,3 +6,6 @@ docker run -p 27017:27017 -d mongo
 
 # run application
 ./mvnw compile quarkus:dev
+
+# sub modules
+./mvnw install -pl bankquarkus -am && ./mvnw quarkus:dev -pl bankquarkus

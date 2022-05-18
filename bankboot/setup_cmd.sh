@@ -9,3 +9,6 @@ docker run -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=account -p 3306:3306 
 
 # run application
 ./mvnw clean spring-boot:run
+
+# sub modules
+./mvnw install -pl bankboot -am && ./mvnw spring-boot:run -pl bankboot

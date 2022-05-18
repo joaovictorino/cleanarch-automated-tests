@@ -18,6 +18,18 @@
     	<maven.compiler.release>14</maven.compiler.release>
 	</properties>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.bank</groupId>
+				<artifactId>bank</artifactId>
+				<version>1.0.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -36,9 +48,10 @@
 			<groupId>com.bank.account</groupId>
 			<artifactId>bank</artifactId>
 			<version>1.0-SNAPSHOT</version>
+			<!--
 			<scope>system</scope>
-			<!-- <systemPath>/home/joao/Source/miniDDDJava/bank/target/bank-1.0-SNAPSHOT.jar</systemPath> -->
-			<systemPath>${project.basedir}/../lib/bank-1.0-SNAPSHOT.jar</systemPath>
+			<systemPath>${project.basedir}/../lib/bank-1.0-SNAPSHOT.jar</systemPath> 
+			-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
