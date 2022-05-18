@@ -18,11 +18,6 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.14
-
-    - name: Build Bank
-      working-directory: ./bank
-      run: mvn -B package --file pom.xml -DskipTests
     
     - name: Build Quarkus
-      working-directory: ./bankquarkus
-      run: mvn -B package --file pom.xml -DskipTests
+      run: mvn clean package -pl bankquarkus -am -DskipTests=true
