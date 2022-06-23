@@ -11,4 +11,4 @@ RUN mvn clean package -pl bankquarkus -am -DskipTests=true
 FROM openjdk:17-slim
 EXPOSE 8080
 COPY --from=BUILD /src/bankquarkus/target/ /app/
-ENTRYPOINT ["java", "-jar", "/app/bankquarkus-1.0.0-SNAPSHOT-runner.jar"]
+ENTRYPOINT ["java", "-jar", "/app/bankquarkus-1.0.0-runner.jar"]

@@ -10,5 +10,5 @@ RUN mvn clean package -pl bankboot -am -DskipTests=true
 
 FROM openjdk:17-slim
 EXPOSE 8080
-COPY --from=BUILD /src/bankboot/target/bankboot-0.0.1-SNAPSHOT.jar /app/bankboot-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java", "-Dloader.path=\"/app/lib\"", "-jar","/app/bankboot-0.0.1-SNAPSHOT.jar"]
+COPY --from=BUILD /src/bankboot/target/bankboot-1.0.0.jar /app/bankboot-1.0.0.jar
+ENTRYPOINT ["java", "-Dloader.path=\"/app/lib\"", "-jar","/app/bankboot-1.0.0.jar"]
