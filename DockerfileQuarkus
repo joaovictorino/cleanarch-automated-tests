@@ -6,7 +6,7 @@ WORKDIR /src
 RUN rm /src/bankquarkus/src/main/resources/application.properties
 RUN mv /src/bankquarkus/src/main/resources/application.docker.properties /src/bankquarkus/src/main/resources/application.properties
 
-RUN mvn clean package -pl bankquarkus -am -DskipTests=true
+RUN mvn -T 1C clean package -pl bankquarkus -am -DskipTests=true
 
 FROM openjdk:17-slim
 EXPOSE 8080
