@@ -12,12 +12,12 @@ public class AccountNumber {
 
     private void validate(String number) {
         if (number == null
-            || IsNot6NumericDigits(number)) {
+            || isNot6NumericDigits(number)) {
             throw new IllegalArgumentException("wrong number account");
         }
     }
 
-    private boolean IsNot6NumericDigits(String number) {
+    private boolean isNot6NumericDigits(String number) {
         return !number.matches("^[0-9]{6}$");
     }
 
