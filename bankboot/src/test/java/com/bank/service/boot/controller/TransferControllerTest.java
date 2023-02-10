@@ -38,8 +38,8 @@ public class TransferControllerTest {
     public void setup() {
         accountFrom = new Account("123456", 5000.0);
         accountTo = new Account("654321", 5000.0);
-        when(accountRepository.get(argThat(account -> account != null && account.equals("123456")))).thenReturn(accountFrom);
-        when(accountRepository.get(argThat(account -> account != null && account.equals("654321")))).thenReturn(accountTo);
+        when(accountRepository.get("123456")).thenReturn(accountFrom);
+        when(accountRepository.get("654321")).thenReturn(accountTo);
     }
 
     @Test
